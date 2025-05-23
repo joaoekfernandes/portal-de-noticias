@@ -1,0 +1,307 @@
+
+/* global */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --brand-color-light: #60A5FA;
+  --brand-color-dark: #1D4ED8;
+
+  --bg-color: #0F172A;
+  --stroke-color: #1E293B;  
+
+  --text-color-primary: #F1F5F9;
+  --text-color-secondary: #CBD5E1;
+
+  --font-family: 'Archivo', sans-serif;
+  --font-h1: 800 24px/135% var(--font-family);
+  --font-h2: 800 16px/140% var(--font-family);
+  --font-h3: 800 14px/140% var(--font-family);
+  --font-span: 600 14px/145% var(--font-family);
+  --font-sm-p: 400 14px/165% var(--font-family);
+  --text: 400 16px/140% var(var(--font-family));
+  --font-tipo-video: 400 10px var(var(--font-family));
+}
+
+body {
+  color: var(--text-color-primary);
+  background-color: var(--bg-color);
+  font: var(--text);
+  margin: auto;
+
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+a:hover {
+  color: var(--brand-color-light);
+}
+
+h1, h2, h3 {
+  font: inherit;
+}
+
+img {
+  max-width: 100%; /* relativo a caixa que voce esta inserida, dona caixa!*/
+}
+
+/*header container */
+.container {
+  max-width: 1280px;
+  padding-inline: 32px;
+  margin-inline: auto;
+}
+
+main {
+  margin-block: 40px;
+  row-gap: 80px;
+  column-gap: 32px;
+
+  grid-template-columns: 2fr 1.4fr;
+
+  grid-template-areas: 
+  "featured featured"
+  "weekly weekly"
+  "ai aside";
+}
+
+
+
+.content-tag {
+  display: inline-block;
+  background-color: var(--brand-color-dark);
+  padding: 4px;
+  border-radius: 4px;
+  font: 500 10px/1.2 var(--font-family);
+  letter-spacing: 0.04em;
+  color: var(--text-color-primary);
+  box-shadow: 0px 4px 16px rgba(2,6,23,0.251);
+}
+
+
+
+
+
+/* aplicando mesma altura e tamanho das imagens */
+
+section header {
+  border-top: 1px solid var(--stroke-color);
+  padding-block: 12px 24px;
+  font: var(--font-span);
+
+  a{
+    justify-self: end;
+    align-items: center;
+    gap:8px;
+
+    span {
+      background-image: url(assets/icons/ArrowRight.png);
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover span {
+      background-image: url(assets/icons/ArrowRight-hover.svg);
+    }
+  }
+}
+
+
+#featured {
+  grid-area: featured;
+  img {
+    height: 100%;
+    object-fit: cover;
+
+  }
+  .card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    &::before {
+      content: "";
+      position: absolute;
+      inset:0;
+      top:50%;
+      background: linear-gradient(
+        180deg,
+        transparent 0%,
+        #020617 100%
+      );
+    }
+
+    figcaption {
+      position: absolute;
+      bottom: 0;
+      padding: 24px;
+
+      &:has(.text-l) {
+        padding: 12px;
+      }
+    }
+
+    h2 {
+      margin-top: 8px;
+    }
+  }
+}
+
+#weekly {
+
+  grid-area: weekly;
+
+  &>div {
+    grid-template-columns: repeat(4, 292px);
+  }
+
+  img {
+    height: 160px;
+    width: 1/1;
+    object-fit: cover;
+  }
+
+  figure {
+    position: relative;;
+
+    .content-tag {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+    }
+
+    p {
+      margin-top: 8px;
+      font-weight: 800;
+    }
+  }
+
+}
+
+#ai {
+  grid-area: ai;
+
+  img {
+    width: 176px;
+    object-fit: cover;
+  }
+
+  h3 {
+    margin-block: 8px 4px;
+  }
+
+}
+
+
+aside {
+  grid-area: aside;
+}
+
+#more {
+
+  margin-top: 32px;
+
+  h3 {
+    margin-top: 8px;
+  }
+
+  img {
+    width: 72px;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* UTILITY (classes pre-defined that repeat throughout the HTML)*/
+.grid {
+  display: grid;
+}
+
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+
+.grid-flow-two {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.gap-sixteen {
+  gap: 16px;
+}
+
+.gap-threetwo {
+  gap: 32px;
+}
+
+.text-2xl {
+  font: var(--font-h1);
+}
+
+.text-xl {
+  font: var(--font-h2);
+}
+
+.text-l {
+  font: var(--font-h3);
+}
+
+.text-sm {
+  font: var(--font-sm-p);
+}
+
+
+
+
+
+
+
+/* HEADER */
+#primary {
+  padding-block: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+header #primary div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+div:nth-child(2) {
+  margin-inline: auto;
+}
+
+div:nth-child(3) {
+  justify-self: end;
+}
+
+
+
+/* SECONDARY PART */
+
+#secondary {
+  padding-block: 14px;
+  border: solid 1px var(--stroke-color);
+  border-inline: none;
+  justify-content: space-between;
+}
